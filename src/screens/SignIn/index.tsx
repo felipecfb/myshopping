@@ -38,6 +38,22 @@ export function SignIn() {
       });
   }
 
+  function handleSignInWithEmailAndPassword() {
+    auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(({ user }) => console.log(user))
+      .catch((error) => {
+        switch (error.code) {
+          case "auth/user-not-found" || "auth/wrong-password":
+            Alert.alert("Usuário não encontrado. E-mail e/ou senha inválida!");
+            break;
+          case "auth/invalid-email":
+            Alert.alert("E-mail inválido!");
+            break;
+        }
+      });
+  }
+
   return (
     <Container>
       <Title>MyShopping</Title>
@@ -51,7 +67,7 @@ export function SignIn() {
 
       <Input placeholder="senha" secureTextEntry onChangeText={setPassword} />
 
-      <Button title="Entrar" onPress={handleSignInWithAnonymously} />
+      <Button title="Entrar" onPress={handleSignInWithEmailAndPassword} />
 
       <Account>
         <ButtonText title="Recuperar senha" onPress={() => {}} />
