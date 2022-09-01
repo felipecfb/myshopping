@@ -39,7 +39,7 @@ export function SignIn() {
       <Button title="Entrar" onPress={handleSignInWithAnonymously} />
 
       <Account>
-        <ButtonText title="Recuperar senha" onPress={() => {}} />
+        <ButtonText title="Recuperar senha" onPress={() => { }} />
         <ButtonText
           title="Criar minha conta"
           onPress={handleCreateUserAccount}
